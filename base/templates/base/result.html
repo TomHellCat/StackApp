@@ -1,0 +1,33 @@
+{% extends 'base/header.html' %}
+{% block content %}
+    <div class="container">
+        <ul>
+            {% for list in list1 %}
+            <li>
+                <div>
+                    <h3>{{list.title}}</h3><br>
+                    <p>Author: <b>{{list.author}}</b> Score: <b>{{list.score}}</b> <a href={{list.link}} class="waves-effect waves-light btn">view on StackOverFlow</a></p>
+                </div>
+            </li>
+                
+            {% endfor %}
+        </ul>
+        <div class="pagination">
+            <span class="step-links">
+                {% if list1.has_previous %}
+                    <a href="?page=1" class="waves-effect waves-light btn">&laquo; first</a>
+                    <a href="?page={{ list1.previous_page_number }}" class="waves-effect waves-light btn">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ list1.number }} of {{ list1.paginator.num_pages }}.
+                </span>
+
+                {% if list1.has_next %}
+                    <a href="?page={{ list1.next_page_number }}" class="waves-effect waves-light btn">next</a>
+                    <a href="?page={{ list1.paginator.num_pages }}" class="waves-effect waves-light btn">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+{% endblock %}

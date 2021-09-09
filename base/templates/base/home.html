@@ -1,0 +1,10 @@
+{% extends 'base/header.html' %}
+{% block content %}
+    <h3>Enter tag and Title</h3>
+    <form action="/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+    <p>You can do 5 searches per minute and 100 searches per day</p>
+{% endblock %}
